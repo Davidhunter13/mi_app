@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">mi_app</string>
     <string name="haz_clic_aqu">Haz clic aquí</string>
+    <!-- INICIO DE SESION -->
+    <string name="inicio_sesion">inicio sesión</string>
+    <string name="contrasena">Constraseña</string>
+    <string name="correo">Correo</string>
+    <string name="btn_inicio_sesion">iniciar sesión</string>
+
 </resources>
