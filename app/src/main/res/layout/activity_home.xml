@@ -49,12 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/InputField"
-            android:hint="@string/correo">
+            android:hint="@string/correo"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:hint="@string/correo"
                 android:padding="12dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,12 +65,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/InputField"
-            android:hint="@string/contrasena">
+            android:hint="@string/contrasena"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:hint="@string/contrasena"
                 android:padding="12dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 

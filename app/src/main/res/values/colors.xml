@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- COLORES ORIGINALES SOBREESCRITOS CON TU PALETA -->
+    <color name="purple_200">#2460B6</color>   <!-- secundario -->
+    <color name="purple_500">#172E62</color>   <!-- primario -->
+    <color name="purple_700">#172E62</color>   <!-- primario (oscuro) -->
+    <color name="teal_200">#2460B6</color>     <!-- secundario -->
+    <color name="teal_700">#172E62</color>     <!-- primario -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- COLORES_APP -->
-
+    <!-- COLORES_APP (se mantienen por si los usas directo) -->
+    <color name="primario">#172E62</color>
+    <color name="secundario">#2460B6</color>
     <color name="botones">#2460B6</color>
     <color name="gris_blanco">#F7F7F8</color>
     <color name="gris_letra">#262525</color>
