@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mi_app">
         <activity
-            android:name=".home"
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

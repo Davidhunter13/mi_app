@@ -5,130 +5,134 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    tools:context=".Home">
 
     <!-- Contenedor LinearLayout -->
     <LinearLayout
-        android:paddingHorizontal="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:spacing="16dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <!-- Logo -->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/login"
-            android:scaleType="fitCenter"
-            android:contentDescription="@null"
             android:background="@android:color/transparent"
-            app:tint="@color/white"/>
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/login"
+            app:tint="@color/white" />
 
         <!-- Título -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/inicio_sesion"
             android:textAllCaps="true"
-            android:textSize="25sp"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <!-- Campo de correo -->
         <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/InputField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/InputField"
             android:hint="@string/correo"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:hint="@string/correo"
-                android:padding="12dp"/>
+                android:inputType="textEmailAddress"
+                android:padding="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo de contraseña -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/InputField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/InputField"
             android:hint="@string/contrasena"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:hint="@string/contrasena"
-                android:padding="12dp"/>
+                android:inputType="textPassword"
+                android:padding="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <!-- Botón -->
         <Button
+            android:id="@+id/btnLogin"
+            style="@style/BotonPrincipal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_inicio_sesion"
-            style="@style/BotonPrincipal"
-            />
+            android:text="@string/btn_inicio_sesion" />
 
         <!-- Contenedor de redes sociales -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="24dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/facebook"
+                android:layout_marginHorizontal="6dp"
                 android:contentDescription="@null"
-                android:layout_marginHorizontal="6dp"/>
+                android:src="@drawable/facebook" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/x"
+                android:layout_marginHorizontal="6dp"
                 android:contentDescription="@null"
-                android:layout_marginHorizontal="6dp"/>
+                android:src="@drawable/x" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/instagram"
+                android:layout_marginHorizontal="6dp"
                 android:contentDescription="@null"
-                android:layout_marginHorizontal="6dp"/>
+                android:src="@drawable/instagram" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/linkedin"
+                android:layout_marginHorizontal="6dp"
                 android:contentDescription="@null"
-                android:layout_marginHorizontal="6dp"/>
+                android:src="@drawable/linkedin" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/youtube"
+                android:layout_marginHorizontal="6dp"
                 android:contentDescription="@null"
-                android:layout_marginHorizontal="6dp"/>
+                android:src="@drawable/youtube" />
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/navPerfil"
+        android:title="Perfil"
+        android:icon="@drawable/ic_perfil" />
+
+    <item
+        android:id="@+id/navInicio"
+        android:title="Inicio"
+        android:icon="@drawable/ic_inicio" />
+
+    <item
+        android:id="@+id/navFotos"
+        android:title="Fotos"
+        android:icon="@drawable/ic_fotos" />
+
+    <item
+        android:id="@+id/navVideos"
+        android:title="Videos"
+        android:icon="@drawable/ic_videos" />
+
+    <item
+        android:id="@+id/navWeb"
+        android:title="Web"
+        android:icon="@drawable/ic_web" />
+
+    <item
+        android:id="@+id/navBotones"
+        android:title="Botones"
+        android:icon="@drawable/ic_botones" />
+
+</menu>
