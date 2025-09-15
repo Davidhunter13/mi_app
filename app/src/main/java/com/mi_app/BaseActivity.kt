@@ -3,6 +3,8 @@ package com.mi_app
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -36,11 +38,62 @@ open class BaseActivity : AppCompatActivity() {
 
         // Items del menú
         navView.setNavigationItemSelectedListener { menuItem ->
-            when(menuItem.itemId){
-                R.id.navInicio -> startActivity(Intent(this, InicioActivity::class.java))
+            when (menuItem.itemId) {
+                R.id.navInicio -> {
+                    // Solo abrir si no estamos ya en InicioActivity
+                    if (this !is InicioActivity) {
+                        startActivity(Intent(this, InicioActivity::class.java))
+                    }
+                }
+                // Otros items...
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+
+        val navView = findViewById<NavigationView>(R.id.navView)
+
+        // Hacer que el NavigationView respete notch y botones de navegación
+        navView.setOnApplyWindowInsetsListener { view, insets ->
+            view.setPadding(
+                view.paddingLeft,
+                insets.systemWindowInsetTop,    // margen arriba (barra de estado / notch)
+                view.paddingRight,
+                insets.systemWindowInsetBottom  // margen abajo (botones de navegación)
+            )
+            insets.consumeSystemWindowInsets()
+        }
+
+
     }
+
+
+    fun datosHeader(nombre: String? = null, nombre_foto: String? = null, version: String? = null) {
+        val navView = findViewById<NavigationView>(R.id.navView)
+        // Header: obtener la vista del header
+        val headerView = navView.getHeaderView(0)
+
+        // Nombre de usuario
+        val tvNombreUsuario = headerView.findViewById<TextView>(R.id.tvNombreUsuario)
+        tvNombreUsuario.text = nombre ?: "Usuario"
+
+        // Foto de perfil
+        val ivFotoPerfil = headerView.findViewById<ImageView>(R.id.ivFotoPerfil)
+
+        // Intentar cargar la foto desde drawable con el prefijo "carpeta"
+        val resId = nombre_foto?.let { resources.getIdentifier("${it}", "drawable", packageName) }
+
+        if (resId != null && resId != 0) {
+            ivFotoPerfil.setImageResource(resId)
+        } else {
+            // Si no existe la imagen, usar un recurso por defecto
+            ivFotoPerfil.setImageResource(R.drawable.ic_perfil)
+        }
+
+        // Footer: versión dinámica
+        val tvVersionFooter = navView.findViewById<TextView>(R.id.tvVersionFooter)
+        tvVersionFooter.text = "Versión - ${version ?: "?"}"
+    }
+
+
 }

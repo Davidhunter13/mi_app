@@ -15,4 +15,7 @@
     <color name="botones">#2460B6</color>
     <color name="gris_blanco">#F7F7F8</color>
     <color name="gris_letra">#262525</color>
+    <color name="gris_borde">#F7F7F8</color>
+    <color name="verde">#9DC44D</color>
+    <color name="fondo_oscuro">#D8000000</color>
 </resources>

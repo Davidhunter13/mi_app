@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/navPerfil"
-        android:title="Perfil"
-        android:icon="@drawable/ic_perfil" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navInicio"
-        android:title="Inicio"
-        android:icon="@drawable/ic_inicio" />
+        android:icon="@drawable/ic_inicio"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/navPerfil"
+        android:icon="@drawable/ic_perfil"
+        android:title="Perfil" />
 
     <item
         android:id="@+id/navFotos"
-        android:title="Fotos"
-        android:icon="@drawable/ic_fotos" />
+        android:icon="@drawable/ic_fotos"
+        android:title="Fotos" />
 
     <item
         android:id="@+id/navVideos"
-        android:title="Videos"
-        android:icon="@drawable/ic_videos" />
+        android:icon="@drawable/ic_videos"
+        android:title="Videos" />
 
     <item
         android:id="@+id/navWeb"
-        android:title="Web"
-        android:icon="@drawable/ic_web" />
+        android:icon="@drawable/ic_web"
+        android:title="Web" />
 
     <item
         android:id="@+id/navBotones"
-        android:title="Botones"
-        android:icon="@drawable/ic_botones" />
+        android:icon="@drawable/ic_botones"
+        android:title="Botones" />
+
 
 </menu>

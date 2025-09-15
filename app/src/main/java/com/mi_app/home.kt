@@ -17,7 +17,7 @@ class Home : AppCompatActivity() {
 
     // Base de datos en memoria (array)
     private val usuarios = arrayListOf(
-        Usuario("David Parra", "david@gmail.com", "1234" ,"david"),
+        Usuario("David Ronaldo Parra Buitrago", "david@gmail.com", "1234" ,"david"),
         Usuario("lorena", "lorena@gmail.com", "abcd" , "lorena"),
     )
 
@@ -60,6 +60,7 @@ class Home : AppCompatActivity() {
                     val intent = android.content.Intent(this, InicioActivity::class.java)
                     intent.putExtra("nombre", usuario.nombre)
                     intent.putExtra("correo", usuario.correo)
+                    intent.putExtra("carpeta", usuario.carpeta)
                     startActivity(intent)
 
                 } else {
