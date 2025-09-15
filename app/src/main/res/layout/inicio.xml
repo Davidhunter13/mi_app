@@ -3,7 +3,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    android:fitsSystemWindows="true">
 
     <!-- Contenido principal -->
     <LinearLayout
@@ -44,6 +45,7 @@
 
     <!-- Menú lateral (Drawer) -->
     <com.google.android.material.navigation.NavigationView
+        android:paddingTop="24dp"
         android:id="@+id/navView"
         android:layout_width="280dp"
         android:layout_height="match_parent"
@@ -51,6 +53,8 @@
         android:background="@color/gris_blanco"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
+        app:itemTextColor="@color/gris_letra"
+        app:itemIconTint="@color/gris_letra"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
