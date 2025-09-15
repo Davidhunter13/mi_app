@@ -23,13 +23,12 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Contenido de la Activity -->
+            <!-- Contenido de foto -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -43,10 +42,8 @@
                         android:layout_height="120dp"
                         android:background="@drawable/circle_border"
                         android:clipToOutline="true"
-                        android:padding="10dp"
                         android:elevation="1dp"
-
-                        >
+                        android:padding="10dp">
 
                         <ImageView
                             android:id="@+id/ivFotoPerfilHome"
@@ -54,22 +51,20 @@
                             android:layout_height="match_parent"
                             android:contentDescription="Foto de perfil"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/david"
-                            />
+                            android:src="@drawable/david" />
 
                     </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="-20dp"
+                        android:background="@drawable/bg_redondeado_derecha"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="20dp"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
-                        android:layout_marginStart="-10dp"
-                        android:background="@drawable/bg_redondeado_derecha"
-                        >
+                        android:paddingStart="30dp"
+                        android:paddingEnd="20dp">
 
 
                         <TextView
@@ -81,15 +76,153 @@
 
                         <TextView
                             android:id="@+id/tvNombre"
-                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="David Ronaldo Parra Buitrago"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <!-- Contenido de secciones  -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_redondeado"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Secciones"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginVertical="5dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@color/gris_borde"
+                        android:elevation="1dp" />
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="3"
+                        android:padding="10dp"
+                        android:rowCount="2"
+                        android:useDefaultMargins="true">
+
+                        <!-- Botón Perfil -->
+                        <LinearLayout
+                            style="@style/BotonGrid"
+                            android:id="@+id/navPerfilHome">
+
+                            <ImageView
+                                style="@style/imagenesgrid"
+                                android:contentDescription="Perfil"
+                                android:src="@drawable/ic_perfil" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Perfil"
+                                android:textColor="@color/gris_blanco"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <!-- Botón Fotos -->
+                        <LinearLayout
+                            style="@style/BotonGrid"
+                            android:id="@+id/navFotosHome">
+
+                            <ImageView
+                                style="@style/imagenesgrid"
+                                android:contentDescription="Fotos"
+                                android:src="@drawable/ic_fotos" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fotos"
+                                android:textColor="@color/gris_blanco"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <!-- Botón Videos -->
+                        <LinearLayout
+                            style="@style/BotonGrid"
+                            android:id="@+id/navVideosHome">
+
+                            <ImageView
+                                style="@style/imagenesgrid"
+                                android:contentDescription="Videos"
+                                android:src="@drawable/ic_videos" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Videos"
+                                android:textColor="@color/gris_blanco"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <!-- Botón Web -->
+                        <LinearLayout
+                            style="@style/BotonGrid"
+                            android:id="@+id/navWebHome">
+
+                            <ImageView
+                                style="@style/imagenesgrid"
+                                android:contentDescription="Web"
+                                android:src="@drawable/ic_web" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Web"
+                                android:textColor="@color/gris_blanco"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <!-- Botón Botones -->
+                        <LinearLayout
+                            style="@style/BotonGrid"
+                            android:id="@+id/navBotonesHome">
+
+                            <ImageView
+                                style="@style/imagenesgrid"
+                                android:contentDescription="Botones"
+                                android:src="@drawable/ic_botones" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Botones"
+                                android:textColor="@color/gris_blanco"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                    </GridLayout>
+
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

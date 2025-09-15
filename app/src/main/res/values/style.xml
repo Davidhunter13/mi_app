@@ -16,6 +16,23 @@
     </style>
 
 
+    <style name="BotonGrid">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="imagenesgrid">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:tint">@color/gris_blanco</item>
+    </style>
+
 
 
 </resources>
