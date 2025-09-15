@@ -107,11 +107,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
                         android:text="Secciones"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_marginVertical="5dp"/>
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <View
                         android:layout_width="match_parent"
@@ -131,8 +131,8 @@
 
                         <!-- Botón Perfil -->
                         <LinearLayout
-                            style="@style/BotonGrid"
-                            android:id="@+id/navPerfilHome">
+                            android:id="@+id/navPerfilHome"
+                            style="@style/BotonGrid">
 
                             <ImageView
                                 style="@style/imagenesgrid"
@@ -143,14 +143,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Perfil"
-                                android:textColor="@color/gris_blanco"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/gris_blanco" />
                         </LinearLayout>
 
                         <!-- Botón Fotos -->
                         <LinearLayout
-                            style="@style/BotonGrid"
-                            android:id="@+id/navFotosHome">
+                            android:id="@+id/navFotosHome"
+                            style="@style/BotonGrid">
 
                             <ImageView
                                 style="@style/imagenesgrid"
@@ -161,14 +160,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Fotos"
-                                android:textColor="@color/gris_blanco"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/gris_blanco" />
                         </LinearLayout>
 
                         <!-- Botón Videos -->
                         <LinearLayout
-                            style="@style/BotonGrid"
-                            android:id="@+id/navVideosHome">
+                            android:id="@+id/navVideosHome"
+                            style="@style/BotonGrid">
 
                             <ImageView
                                 style="@style/imagenesgrid"
@@ -179,14 +177,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Videos"
-                                android:textColor="@color/gris_blanco"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/gris_blanco" />
                         </LinearLayout>
 
                         <!-- Botón Web -->
                         <LinearLayout
-                            style="@style/BotonGrid"
-                            android:id="@+id/navWebHome">
+                            android:id="@+id/navWebHome"
+                            style="@style/BotonGrid">
 
                             <ImageView
                                 style="@style/imagenesgrid"
@@ -197,14 +194,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Web"
-                                android:textColor="@color/gris_blanco"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/gris_blanco" />
                         </LinearLayout>
 
                         <!-- Botón Botones -->
                         <LinearLayout
-                            style="@style/BotonGrid"
-                            android:id="@+id/navBotonesHome">
+                            android:id="@+id/navBotonesHome"
+                            style="@style/BotonGrid">
 
                             <ImageView
                                 style="@style/imagenesgrid"
@@ -215,14 +211,43 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Botones"
-                                android:textColor="@color/gris_blanco"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/gris_blanco" />
                         </LinearLayout>
 
                     </GridLayout>
 
 
                 </LinearLayout>
+            </LinearLayout>
+
+            <!-- Contenido de carrusel  -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="Imagenes"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/carruselRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:padding="8dp"
+                    android:scrollbars="none"/>
+
+
             </LinearLayout>
 
         </LinearLayout>
