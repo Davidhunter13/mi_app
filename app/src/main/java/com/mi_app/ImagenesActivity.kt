@@ -53,12 +53,9 @@ class ImagenesActivity : BaseActivity() {
         carruselRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        val imagenes = listOf(
-            R.drawable.img1,
-            R.drawable.img2,
-            R.drawable.img3,
-            R.drawable.img4
-        )
+        val imagenes = (1..27).map { i ->
+            resources.getIdentifier("imagen_$i", "drawable", packageName)
+        }.filter { it != 0 } // filtra los que existan
 
         // Obtener layout de indicadores
         val indicatorLayout = findViewById<LinearLayout>(R.id.indicatorLayout)
@@ -105,7 +102,7 @@ class ImagenesActivity : BaseActivity() {
                 adapter.updateIndicators(currentIndex) // <-- actualizar indicadores
                 currentIndex = (currentIndex + 1) % adapter.itemCount
 
-                handler.postDelayed(this, 5000)
+                handler.postDelayed(this, 3000)
             }
         }
         handler.post(runnable)
@@ -151,9 +148,9 @@ class ImagenesActivity : BaseActivity() {
                 for (i in images.indices) {
                     val dot = ImageView(context).apply {
                         setImageResource(R.drawable.dot_inactive)
-                        val size = 16.toDp(context)
+                        val size = 8.toDp(context)
                         val params = LinearLayout.LayoutParams(size, size)
-                        params.setMargins(8.toDp(context), 0, 8.toDp(context), 0)
+                        params.setMargins(2.toDp(context), 0, 2.toDp(context), 0)
                         layoutParams = params
                     }
                     indicatorLayout.addView(dot)
