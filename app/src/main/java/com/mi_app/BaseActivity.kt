@@ -20,7 +20,7 @@ open class BaseActivity : AppCompatActivity() {
         // El layout específico de la actividad se inflará luego
     }
 
-    fun setupDrawer(drawerLayout: DrawerLayout, navView: NavigationView) {
+    fun setupDrawer(drawerLayout: DrawerLayout, navView: NavigationView ,nombre_persona: String? = null, nombre_foto: String? = null ,correo_persona: String? = null) {
         this.drawerLayout = drawerLayout
         this.navView = navView
 
@@ -36,20 +36,34 @@ open class BaseActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        // Items del menú
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navInicio -> {
-                    // Solo abrir si no estamos ya en InicioActivity
                     if (this !is InicioActivity) {
-                        startActivity(Intent(this, InicioActivity::class.java))
+                        val intent = Intent(this, InicioActivity::class.java).apply {
+                            putExtra("nombre", nombre_persona)
+                            putExtra("correo", correo_persona)
+                            putExtra("carpeta", nombre_foto)
+                        }
+                        startActivity(intent)
                     }
                 }
-                // Otros items...
+
+                R.id.navWeb -> {
+                    if (this !is WebActivity) {
+                        val intent = Intent(this, WebActivity::class.java).apply {
+                            putExtra("nombre", nombre_persona)
+                            putExtra("correo", correo_persona)
+                            putExtra("carpeta", nombre_foto)
+                        }
+                        startActivity(intent)
+                    }
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+
 
         val navView = findViewById<NavigationView>(R.id.navView)
 

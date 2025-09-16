@@ -1,5 +1,7 @@
 package com.mi_app
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 
 class InicioActivity : BaseActivity() {
@@ -29,6 +32,10 @@ class InicioActivity : BaseActivity() {
         setupDrawer(
             findViewById(R.id.drawerLayout),
             findViewById(R.id.navView),
+            nombre,
+            carpeta,
+            correo
+
         )
 
         // Configurar datos del header
@@ -49,6 +56,7 @@ class InicioActivity : BaseActivity() {
         }
 
         // 🚀 Configurar el carrusel
+        // 🚀 Configurar el carrusel
         carruselRecycler = findViewById(R.id.carruselRecycler)
         carruselRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -56,14 +64,33 @@ class InicioActivity : BaseActivity() {
         val imagenes = listOf(
             R.drawable.img1,
             R.drawable.img2,
-            R.drawable.img3
+            R.drawable.img3,
+            R.drawable.img4
         )
 
-        adapter = CarruselAdapter(imagenes)
+        // Obtener layout de indicadores
+        val indicatorLayout = findViewById<LinearLayout>(R.id.indicatorLayout)
+
+        // Pasar indicador al Adapter
+        adapter = CarruselAdapter(imagenes, indicatorLayout)
         carruselRecycler.adapter = adapter
+
+        // Inicializar indicadores una sola vez
+        adapter.setupIndicators(this)
 
         // Iniciar el autoscroll
         startAutoScroll()
+
+        // 👉 Web
+        findViewById<LinearLayout>(R.id.navWebHome).setOnClickListener {
+            val intent = Intent(this, WebActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("correo", correo)
+                putExtra("carpeta", carpeta)
+            }
+            startActivity(intent)
+        }
+
     }
 
     private fun startAutoScroll() {
@@ -72,6 +99,7 @@ class InicioActivity : BaseActivity() {
                 if (adapter.itemCount == 0) return
 
                 carruselRecycler.smoothScrollToPosition(currentIndex)
+                adapter.updateIndicators(currentIndex) // <-- actualizar indicadores
                 currentIndex = (currentIndex + 1) % adapter.itemCount
 
                 handler.postDelayed(this, 5000)
@@ -80,8 +108,11 @@ class InicioActivity : BaseActivity() {
         handler.post(runnable)
     }
 
-    class CarruselAdapter(private val images: List<Int>) :
-        RecyclerView.Adapter<CarruselAdapter.CarruselViewHolder>() {
+
+    class CarruselAdapter(
+        private val images: List<Int>,
+        private val indicatorLayout: LinearLayout
+    ) : RecyclerView.Adapter<CarruselAdapter.CarruselViewHolder>() {
 
         inner class CarruselViewHolder(itemView: ImageView) : RecyclerView.ViewHolder(itemView) {
             val imageView: ImageView = itemView
@@ -92,21 +123,49 @@ class InicioActivity : BaseActivity() {
                 layoutParams = ViewGroup.MarginLayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
-                ).apply {
-                    setMargins(10, 10, 10, 10)
-                }
-                scaleType = ImageView.ScaleType.CENTER_CROP
-                background =
-                    ContextCompat.getDrawable(parent.context, R.drawable.bg_redondeado_tran)
+                ).apply { setMargins(10, 0, 10, 0) } // opcional
+                scaleType = ImageView.ScaleType.FIT_CENTER
+                background = ContextCompat.getDrawable(parent.context, R.drawable.bg_redondeado_tran)
                 clipToOutline = true
             }
             return CarruselViewHolder(imageView)
         }
 
+
         override fun onBindViewHolder(holder: CarruselViewHolder, position: Int) {
             holder.imageView.setImageResource(images[position])
+            updateIndicators(position) // Solo actualizar indicador
         }
 
         override fun getItemCount(): Int = images.size
+
+        private fun Int.toDp(context: Context): Int =
+            (this * context.resources.displayMetrics.density).toInt()
+
+        /** Inicializa los puntos de indicador */
+        fun setupIndicators(context: Context) {
+            if (indicatorLayout.childCount == 0) {
+                for (i in images.indices) {
+                    val dot = ImageView(context).apply {
+                        setImageResource(R.drawable.dot_inactive)
+                        val size = 16.toDp(context)
+                        val params = LinearLayout.LayoutParams(size, size)
+                        params.setMargins(8.toDp(context), 0, 8.toDp(context), 0)
+                        layoutParams = params
+                    }
+                    indicatorLayout.addView(dot)
+                }
+            }
+        }
+
+        /** Actualiza el punto activo */
+        fun updateIndicators(activePosition: Int) {
+            for (i in 0 until indicatorLayout.childCount) {
+                val dot = indicatorLayout.getChildAt(i) as ImageView
+                dot.setImageResource(if (i == activePosition) R.drawable.dot_active else R.drawable.dot_inactive)
+            }
+        }
     }
+
+
 }

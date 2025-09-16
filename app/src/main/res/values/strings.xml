@@ -7,4 +7,6 @@
     <string name="correo">Correo</string>
     <string name="btn_inicio_sesion">iniciar sesión</string>
 
+    <string name="url">Copie la url</string>
+    <string name="buscar">Buscar</string>
 </resources>
