@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mi_app</string>
+    <string name="app_name">CoreView</string>
     <string name="haz_clic_aqu">Haz clic aquí</string>
     <!-- INICIO DE SESION -->
     <string name="inicio_sesion">inicio sesión</string>
