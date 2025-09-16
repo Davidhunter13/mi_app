@@ -1,28 +1,34 @@
 package com.mi_app
 
+import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.app.AppCompatActivity
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
+import com.mi_app.InicioActivity.CarruselAdapter
 
-class InicioActivity : BaseActivity() {
+
+class ImagenesActivity : BaseActivity() {
+
     private lateinit var carruselRecycler: RecyclerView
-    private lateinit var adapter: CarruselAdapter
+    private lateinit var adapter: ImagenesActivity.CarruselAdapter
     private val handler = Handler(Looper.getMainLooper())
     private var currentIndex = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.inicio)
+        setContentView(R.layout.activity_imagenes)
 
         val nombre = intent.getStringExtra("nombre")
         val correo = intent.getStringExtra("correo")
@@ -35,25 +41,12 @@ class InicioActivity : BaseActivity() {
             nombre,
             carpeta,
             correo
-
         )
 
         // Configurar datos del header
-        val versionName = packageManager
-            .getPackageInfo(packageName, 0).versionName
+        val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         datosHeader(nombre, carpeta, versionName)
 
-        findViewById<TextView>(R.id.tvNombre).text = nombre
-
-        // Foto de perfil
-        val ivFotoPerfil = findViewById<ImageView>(R.id.ivFotoPerfilHome)
-        val resId = carpeta?.let { resources.getIdentifier(it, "drawable", packageName) }
-
-        if (resId != null && resId != 0) {
-            ivFotoPerfil.setImageResource(resId)
-        } else {
-            ivFotoPerfil.setImageResource(R.drawable.ic_perfil)
-        }
 
         //  Configurar el carrusel
         carruselRecycler = findViewById(R.id.carruselRecycler)
@@ -94,25 +87,12 @@ class InicioActivity : BaseActivity() {
         })
 
 
-        // 👉 Imagenes
-        findViewById<LinearLayout>(R.id.navFotosHome).setOnClickListener {
-            val intent = Intent(this, ImagenesActivity::class.java).apply {
-                putExtra("nombre", nombre)
-                putExtra("correo", correo)
-                putExtra("carpeta", carpeta)
-            }
-            startActivity(intent)
+        val thumbnailRecycler = findViewById<RecyclerView>(R.id.thumbnailRecycler)
+        thumbnailRecycler.layoutManager = GridLayoutManager(this, 2) // 2 columnas
+        thumbnailRecycler.adapter = ThumbnailAdapter(listaImagenes) { imagen ->
+            mostrarDetalle(this, imagen)
         }
 
-        // 👉 Web
-        findViewById<LinearLayout>(R.id.navWebHome).setOnClickListener {
-            val intent = Intent(this, WebActivity::class.java).apply {
-                putExtra("nombre", nombre)
-                putExtra("correo", correo)
-                putExtra("carpeta", carpeta)
-            }
-            startActivity(intent)
-        }
 
     }
 
@@ -189,6 +169,78 @@ class InicioActivity : BaseActivity() {
             }
         }
     }
+
+    class Imagen(
+        val id: Int,
+        val nombre: String,
+        val descripcion: String,
+        val recurso: Int // R.drawable.imagenX
+    )
+
+    val listaImagenes = listOf(
+        Imagen(
+            1,
+            "Junior",
+            "Junior, el intrépido guardián de la noche, recorre los senderos envuelto en misterio. Sus ojos reflejan la luz de las estrellas y su espíritu valiente enfrenta cualquier sombra que se cruce en su camino, protegiendo a quienes ama con una lealtad inquebrantable.",
+            R.drawable.img1
+        ),
+        Imagen(
+            2,
+            "Dante",
+            "Dante, señor de las montañas cubiertas de nieve, avanza con paso firme entre los picos más altos. Su mirada poderosa y decidida parece leer los secretos del viento, y su presencia impone respeto a todos los que osan acercarse a su territorio helado.",
+            R.drawable.img2
+        ),
+        Imagen(
+            3,
+            "Tommy",
+            "Tommy, explorador de la ciudad al caer el sol, domina los tejados y callejones con una gracia única. Su espíritu libre danza entre luces y sombras, y su inteligencia estratégica lo convierte en un aventurero silencioso que siempre deja su marca en la urbe dorada por el atardecer.",
+            R.drawable.img3
+        ),
+        Imagen(
+            4,
+            "Maya",
+            "Maya, fuerza indomable y belleza salvaje, emerge con la majestuosidad de un volcán en erupción. Cada movimiento suyo irradia poder y libertad, y su corazón late al ritmo de la tierra, dejando huella en todos los que contemplan su espíritu ardiente y valiente.",
+            R.drawable.img4
+        )
+    )
+
+    class ThumbnailAdapter(
+        private val lista: List<Imagen>,
+        private val clickListener: (Imagen) -> Unit
+    ) : RecyclerView.Adapter<ThumbnailAdapter.ViewHolder>() {
+
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val imagen: ImageView = view.findViewById(R.id.imgThumbnail)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_thumbnail, parent, false)
+            return ViewHolder(view)
+        }
+
+        override fun getItemCount() = lista.size
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val item = lista[position]
+            holder.imagen.setImageResource(item.recurso)
+            holder.itemView.setOnClickListener { clickListener(item) }
+        }
+    }
+
+    fun mostrarDetalle(context: Context, imagen: Imagen) {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.dialog_imagen)
+        val imgView = dialog.findViewById<ImageView>(R.id.imgDetalle)
+        val tvNombre = dialog.findViewById<TextView>(R.id.tvNombre)
+        val tvDescripcion = dialog.findViewById<TextView>(R.id.tvDescripcion)
+
+        imgView.setImageResource(imagen.recurso)
+        tvNombre.text = imagen.nombre
+        tvDescripcion.text = imagen.descripcion
+
+        dialog.show()
+    }
+
 
 
 }
