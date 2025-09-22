@@ -31,8 +31,6 @@
 
                 <!-- Contenido de carrusel  -->
 
-                <!-- Contenido de carrusel  -->
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -70,7 +70,7 @@ class WebActivity : BaseActivity() {
             }
         }
 
-        // Opcional: cargar URL por defecto
+        // Cargar URL por defecto
         val defaultUrl = "https://www.poli.edu.co/"
         urlInput.setText(defaultUrl)
         webView.loadUrl(defaultUrl)

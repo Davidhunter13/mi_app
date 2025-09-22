@@ -56,7 +56,7 @@ class InicioActivity : BaseActivity() {
         }
 
         //  Configurar el carrusel
-        carruselRecycler = findViewById(R.id.carruselRecycler)
+            carruselRecycler = findViewById(R.id.carruselRecycler)
         carruselRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
@@ -122,7 +122,7 @@ class InicioActivity : BaseActivity() {
                 if (adapter.itemCount == 0) return
 
                 carruselRecycler.smoothScrollToPosition(currentIndex)
-                adapter.updateIndicators(currentIndex) // <-- actualizar indicadores
+                adapter.updateIndicators(currentIndex)
                 currentIndex = (currentIndex + 1) % adapter.itemCount
 
                 handler.postDelayed(this, 5000)

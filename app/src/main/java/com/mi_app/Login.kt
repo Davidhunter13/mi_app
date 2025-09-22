@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 // Clase de usuario simple
 data class Usuario(val nombre: String, val correo: String, val contrasena: String , val carpeta: String)
 
-class Home : AppCompatActivity() {
+class Login : AppCompatActivity() {
 
     // Base de datos en memoria (array)
     private val usuarios = arrayListOf(
@@ -24,7 +24,7 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_login)
 
         // Ajuste de paddings
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

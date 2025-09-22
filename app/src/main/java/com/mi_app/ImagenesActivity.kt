@@ -99,7 +99,7 @@ class ImagenesActivity : BaseActivity() {
                 if (adapter.itemCount == 0) return
 
                 carruselRecycler.smoothScrollToPosition(currentIndex)
-                adapter.updateIndicators(currentIndex) // <-- actualizar indicadores
+                adapter.updateIndicators(currentIndex)
                 currentIndex = (currentIndex + 1) % adapter.itemCount
 
                 handler.postDelayed(this, 3000)
