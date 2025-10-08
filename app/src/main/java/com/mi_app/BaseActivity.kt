@@ -70,6 +70,28 @@ open class BaseActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+
+                R.id.navVideos -> {
+                    if (this !is VideoActivity) {
+                        val intent = Intent(this, VideoActivity::class.java).apply {
+                            putExtra("nombre", nombre_persona)
+                            putExtra("correo", correo_persona)
+                            putExtra("carpeta", nombre_foto)
+                        }
+                        startActivity(intent)
+                    }
+                }
+
+                R.id.navPerfil -> {
+                    if (this !is PerfilActivity) {
+                        val intent = Intent(this, PerfilActivity::class.java).apply {
+                            putExtra("nombre", nombre_persona)
+                            putExtra("correo", correo_persona)
+                            putExtra("carpeta", nombre_foto)
+                        }
+                        startActivity(intent)
+                    }
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true

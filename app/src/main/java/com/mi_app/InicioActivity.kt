@@ -114,6 +114,26 @@ class InicioActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        // 👉 Videos
+        findViewById<LinearLayout>(R.id.navVideosHome).setOnClickListener {
+            val intent = Intent(this, VideoActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("correo", correo)
+                putExtra("carpeta", carpeta)
+            }
+            startActivity(intent)
+        }
+
+        // 👉 perfil
+        findViewById<LinearLayout>(R.id.navPerfilHome).setOnClickListener {
+            val intent = Intent(this, PerfilActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("correo", correo)
+                putExtra("carpeta", carpeta)
+            }
+            startActivity(intent)
+        }
+
     }
 
     private fun startAutoScroll() {

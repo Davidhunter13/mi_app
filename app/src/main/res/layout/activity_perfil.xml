@@ -1,0 +1,269 @@
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:fitsSystemWindows="true"
+        tools:context=".PerfilActivity">
+
+
+
+    <!-- Contenido principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!-- Header (barra superior con menú) -->
+        <include layout="@layout/header" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="20dp">
+
+            <!-- Texto de bienvenida -->
+            <FrameLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/circle_border"
+                android:clipToOutline="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/fotoPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Foto de perfil"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/david" />
+
+            </FrameLayout>
+
+            <!-- Nombre dinámico -->
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Usuario"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Tarjeta Información básica -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg_redondeado"
+                android:padding="16dp"
+                android:elevation="6dp"
+                android:layout_marginBottom="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Información básica"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvCorreo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo electrónico: ejemplo@gmail.com"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvTelefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono: 0000000000"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvDocumento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Documento/ID: 00000000"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvFechaNacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de nacimiento: DD/MM/AAAA"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Título estudios -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estudios"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Primer estudio -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg_redondeado"
+                android:padding="14dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:text="Carrera: Ingeniería de Software"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Institución: Politécnico Grancolombiano"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Estado: En curso"
+                    android:textColor="@color/botones"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Fecha de inicio: 2023 - Actualidad"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:progress="70"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressTint="@color/botones"
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:text="Avance en plan de estudios: 70%"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+
+            <!-- Segundo estudio -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg_redondeado"
+                android:padding="14dp">
+
+                <TextView
+                    android:text="Carrera: Análisis y desarrollo de software"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Institución: SENA"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+
+                <TextView
+                    android:text="Estado: Finalizado"
+                    android:textColor="@color/botones"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Fecha de inicio: 2021 – 2022"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:progress="100"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressTint="@color/botones"
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:text="Avance en plan de estudios: 100%"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <!-- Menú lateral -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/gris_blanco"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/gris_letra"
+        app:itemTextColor="@color/gris_letra"
+        app:menu="@menu/nav_menu">
+
+        <include layout="@layout/nav_footer" />
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
