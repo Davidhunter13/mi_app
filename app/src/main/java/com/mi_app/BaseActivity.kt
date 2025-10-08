@@ -92,6 +92,17 @@ open class BaseActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+
+                R.id.navBotones -> {
+                    if (this !is BotonesActivity) {
+                        val intent = Intent(this, BotonesActivity::class.java).apply {
+                            putExtra("nombre", nombre_persona)
+                            putExtra("correo", correo_persona)
+                            putExtra("carpeta", nombre_foto)
+                        }
+                        startActivity(intent)
+                    }
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true

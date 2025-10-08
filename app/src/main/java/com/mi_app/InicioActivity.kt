@@ -134,6 +134,16 @@ class InicioActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        // 👉 perfil
+        findViewById<LinearLayout>(R.id.navBotonesHome).setOnClickListener {
+            val intent = Intent(this, BotonesActivity::class.java).apply {
+                putExtra("nombre", nombre)
+                putExtra("correo", correo)
+                putExtra("carpeta", carpeta)
+            }
+            startActivity(intent)
+        }
+
     }
 
     private fun startAutoScroll() {
