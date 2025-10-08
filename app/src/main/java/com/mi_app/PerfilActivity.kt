@@ -11,7 +11,7 @@ class PerfilActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        // 📦 Datos recibidos desde el intent
+        //  Datos recibidos desde el intent
         val nombre = intent.getStringExtra("nombre") ?: "Usuario"
         val correo = intent.getStringExtra("correo") ?: "Sin correo"
         val carpeta = intent.getStringExtra("carpeta") ?: ""
@@ -29,7 +29,7 @@ class PerfilActivity : BaseActivity() {
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         datosHeader(nombre, carpeta, versionName)
 
-        // 🧠 Referencias a vistas
+        //  Referencias a vistas
         val fotoPerfil = findViewById<ImageView>(R.id.fotoPerfil)
         val tvNombre = findViewById<TextView>(R.id.tvNombre)
         val tvCorreo = findViewById<TextView>(R.id.tvCorreo)
@@ -37,14 +37,14 @@ class PerfilActivity : BaseActivity() {
         val tvDocumento = findViewById<TextView>(R.id.tvDocumento)
         val tvFechaNacimiento = findViewById<TextView>(R.id.tvFechaNacimiento)
 
-        // 🧩 Asigna valores dinámicos
+        // Asigna valores dinámicos
         tvNombre.text = nombre
         tvCorreo.text = "Correo electrónico: $correo"
         tvTelefono.text = "Teléfono: 320398531"
         tvDocumento.text = "Documento/ID: 1014298107"
         tvFechaNacimiento.text = "Fecha de nacimiento: 13 junio 1998"
 
-        // 🖼️ Cargar imagen desde drawable o desde carpeta interna
+        //  Cargar imagen desde drawable o desde carpeta interna
         try {
             if (carpeta.isNotEmpty()) {
                 val resId = resources.getIdentifier(carpeta, "drawable", packageName)
